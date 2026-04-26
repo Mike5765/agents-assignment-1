@@ -79,9 +79,20 @@ The kit includes 15 foundational papers on agentic AI:
 
 ---
 
-## Quick Start
+## Getting Started
 
-### 1. Install uv (if you don't have it)
+### 1. Fork and Clone the Repository
+
+Go to the GitHub repo and **fork** it to your own GitHub account, then clone your fork:
+
+```bash
+git clone https://github.com/<your-username>/agents-assignment-1.git
+cd agents-assignment-1
+```
+
+> **Why fork?** You will submit your work by sharing your forked repository. This keeps your changes separate from the starter kit.
+
+### 2. Install uv (if you don't have it)
 
 ```bash
 # macOS / Linux
@@ -91,18 +102,16 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 brew install uv
 ```
 
-### 2. Set Up the Project
+### 3. Install Dependencies
 
 ```bash
-cd research_crew_starter
-
-# Install dependencies (uv reads pyproject.toml automatically)
+# uv reads pyproject.toml automatically
 uv sync
 ```
 
 > **Alternative (pip):** If you prefer pip, run `python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt`
 
-### 3. Configure API Keys
+### 4. Configure API Keys
 
 ```bash
 cp .env.example .env
@@ -120,7 +129,7 @@ EMBEDDING_PROVIDER=gemini
 GOOGLE_API_KEY=AIza-your-key-here
 ```
 
-### 4. Build the Vector Store
+### 5. Build the Vector Store
 
 ```bash
 # Build the vector store from the included papers
@@ -132,7 +141,7 @@ uv run python scripts/verify_setup.py
 
 > **Note:** If you need to re-download papers, run `uv run python scripts/download_papers.py`
 
-### 5. Run the Crew
+### 6. Run the Crew
 
 ```bash
 # Interactive mode
@@ -230,6 +239,56 @@ Write a 1-2 page reflection (PDF) covering:
 - Examples of ReAct-style reasoning in your agent outputs
 - What worked, what didn't, and what you would change
 - What would be needed to use this system in production
+
+---
+
+## Submission
+
+Submit your work by pushing to your forked GitHub repository and sharing the link.
+
+### Before You Submit
+
+```bash
+# Make sure your crew runs without errors
+uv run python main.py --example
+
+# Verify setup is intact
+uv run python scripts/verify_setup.py
+```
+
+### What Your Repo Should Contain
+
+```
+your-forked-repo/
+├── agents/                    # Your agent implementations
+│   ├── query_expander.py
+│   ├── source_hunter.py
+│   ├── synthesizer.py
+│   └── report_writer.py
+├── tasks/
+│   └── task_definitions.py    # Your task definitions
+├── crew.py                    # Your crew configuration
+├── outputs/
+│   ├── report_<question1>_<timestamp>.md
+│   └── report_<question2>_<timestamp>.md
+├── reflection.pdf             # Your 1-2 page reflection
+└── ... (all other starter kit files)
+```
+
+### How to Submit
+
+1. Commit and push all your changes to your fork:
+   ```bash
+   git add -A
+   git commit -m "Complete assignment: Research Crew implementation"
+   git push origin main
+   ```
+
+2. Verify your repo is accessible -- visit `https://github.com/<your-username>/agents-assignment-1` and confirm your changes are visible.
+
+3. Submit the link to your GitHub repository through the course portal.
+
+> **Important:** Make sure your repo is **public** (or that the instructor has access) and that `outputs/` contains your two generated literature reviews and `reflection.pdf` is included.
 
 ---
 
