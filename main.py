@@ -54,7 +54,7 @@ def save_report(report: str, question: str) -> Path:
     filename = f"report_{short_name}_{timestamp}.md"
 
     filepath = outputs_dir / filename
-    filepath.write_text(report)
+    filepath.write_text(report, encoding="utf-8")
 
     return filepath
 

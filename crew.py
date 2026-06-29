@@ -33,22 +33,17 @@ def create_research_crew(research_question: str) -> Crew:
     """
 
     # TODO: Create tasks for the research question
-    # tasks = create_research_tasks(research_question)
+    tasks = create_research_tasks(research_question)
 
     # TODO: Create and configure the Crew
-    # crew = Crew(
-    #     agents=[query_expander, source_hunter, synthesizer, report_writer],
-    #     tasks=tasks,
-    #     process=Process.sequential,
-    #     verbose=True,
-    #     memory=True,
-    # )
-    # return crew
-
-    # Placeholder - replace with your implementation
-    raise NotImplementedError(
-        "TODO: Implement create_research_crew() in crew.py"
+    crew = Crew(
+        agents=[query_expander, source_hunter, synthesizer, report_writer],
+        tasks=tasks,
+        process=Process.sequential,
+        verbose=True,
+        memory=True,
     )
+    return crew
 
 
 def run_research(research_question: str) -> str:
@@ -64,14 +59,9 @@ def run_research(research_question: str) -> str:
     TODO: Implement this function
     """
     # TODO: Create the crew and run it
-    # crew = create_research_crew(research_question)
-    # result = crew.kickoff()
-    # return str(result)
-
-    # Placeholder - replace with your implementation
-    raise NotImplementedError(
-        "TODO: Implement run_research() in crew.py"
-    )
+    crew = create_research_crew(research_question)
+    result = crew.kickoff()
+    return str(result)
 
 
 # Allow running crew.py directly for testing
